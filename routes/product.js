@@ -15,19 +15,23 @@ router.get ("/:id", async (req, res) => {
 });
 
 router.post ("/", async (req, res) => {
-    res.send("Olá Mundo product!!");
+    const result = await productCtrl.createProduct(req.body);
+    res.send(result)
 });
 
-router.put ("/:id", async (req, res) => {
-    res.send("Olá Mundo product!!");
-});
+// router.put ("/:id", async (req, res) => {
+//     const result = await productCtrl.updateProduct(req.params.id, {});
+//     res.send(result);
+// });
 
 router.patch ("/:id", async (req, res) => {
-    res.send("Olá Mundo product!!");
+    const result = await productCtrl.updateProduct(req.params.id, req.body);
+    res.send(result);
 });
 
 router.delete ("/:id", async (req, res) => {
-    res.send("Olá Mundo product!!");
+    const result = await productCtrl.deleteProduct(req.params.id, {});
+    res.send(result);
 });
 
 module.exports = router;
